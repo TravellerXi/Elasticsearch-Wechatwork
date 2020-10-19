@@ -1,2 +1,2 @@
-# ElstaicSearch-WechatWork
-ElstaicSearch与企业微信集成
+# Elasticsearch-WechatWork
+elasticsearch与企业微信集成，在企业微信上一个应用内即可使用Elasticsearch
