@@ -14,7 +14,7 @@ config = configparser.ConfigParser()
 config.read(AbsolutePath, encoding='utf-8')
 
 
-# 企业微信相关信息
+# begin 企业微信相关信息
 Token = config.get('CorpWechat', 'Token')
 EncodingAESKey = config.get('CorpWechat', 'EncodingAESKey')
 CorpID = config.get('CorpWechat', 'CorpID')
@@ -24,12 +24,13 @@ if config.get('CorpWechat', 'EnableOAUTH')=='1':
     EnableOAUTH =True
 else:
     EnableOAUTH = False
+# end 企业微信相关信息
 
-# 部署环境网络代理信息
+# begin 部署环境网络代理信息
 proxy = {'http': config.get('Network', 'Proxy'), 'https': config.get('Network', 'Proxy')}
+#end 部署环境网络代理信息
 
-
-# Web服务器的配置信息
+# begin Web服务器的配置信息
 Host = config.get('WebSetting', 'Host')
 Port = int(config.get('WebSetting', 'Port'))
 
@@ -58,7 +59,20 @@ elif config.get('WebSetting', 'Processes')=='0':
 # Processes，未定义，默认True
 else:
     Processes=True
-# ElasticSearchServer
+ExternalURL=config.get('WebSetting', 'ExternalURL')
+# end Web服务器的配置信息
+
+# begin ElasticSearchServer
 ELHost=config.get('ElasticSearchServer', 'ELHost')
 ELPort=config.get('ElasticSearchServer', 'ELPort')
 ELTimeout=int(config.get('ElasticSearchServer', 'ELTimeout'))
+# end ElasticSearchServer
+
+# begin OAUTH URL
+# 企业微信OAUTH的URL，详情见https://work.weixin.qq.com/api/doc/90000/90135/91335
+FirstPartUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + CorpID + '&redirect_uri='
+LastPartUrl = '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect'
+if EnableOAUTH is False:
+    FirstPartUrl = ''
+    LastPartUrl = ''
+# end OAUTH URL

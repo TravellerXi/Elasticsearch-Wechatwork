@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 # coding:utf-8
+"""
+微信消息发送模板。
+目前用到的函数：SendTextToApp，SendMarkDownToApp
+"""
+
 import requests
 import json
 from Functions.CorpInfo import *
-import time
 
 
 def SendTextToApp(UserId,Content):
