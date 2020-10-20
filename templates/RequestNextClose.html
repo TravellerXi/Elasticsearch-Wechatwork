@@ -1,4 +1,5 @@
 <!--用户点击下一页，服务器主动推送消息给微信用户，并自动关闭用户点击页-->
+<!--下述setTimeout里10的单位为毫秒-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -6,7 +7,7 @@
 <title>下一页数据请求成功</title>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
-  setTimeout("window.opener=null;window.close()",1000);
+  setTimeout("window.opener=null;window.close()",10);
 -->
 </SCRIPT>
 </head>
